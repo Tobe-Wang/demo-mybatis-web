@@ -56,6 +56,15 @@
         </dependency>
         <!-- spring-boot结束 -->
 
+        <!-- MyBatis开始 -->
+        <!-- Mybatis Spring Boot -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.5</version>
+        </dependency>
+        <!-- MyBatis结束 -->
+
         <!-- core开始 -->
 
         <!-- core结束 -->
