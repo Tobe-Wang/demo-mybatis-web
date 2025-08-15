@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan(
-        basePackages = "cn.zhaofd.demomybatisweb.demo.repository", // 扫描的Mapper接口包
+        basePackages = {"cn.zhaofd.demomybatisweb.demo.repository"}, // 扫描的Mapper接口包，多个以数组方式配置
         annotationClass = Mapper.class // 指定Mapper接口的注解
 )
 public class MyBatisConfig {
