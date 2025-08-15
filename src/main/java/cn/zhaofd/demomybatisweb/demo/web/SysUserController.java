@@ -8,10 +8,10 @@ import cn.zhaofd.demomybatisweb.demo.dto.SysUser;
 import cn.zhaofd.demomybatisweb.demo.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 手动配置的MyBatis应用示例
@@ -34,5 +34,38 @@ public class SysUserController {
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public SysUser findById(@PathVariable("id") Integer id) {
         return sysUserService.findById(id);
+    }
+
+    /**
+     * 查询
+     *
+     * @param params 查询参数
+     * @return {@code List<SysUser>}
+     */
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<SysUser> find(@RequestParam Map<String, Object> params) {
+        return sysUserService.find(params);
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param params 查询参数
+     * @return {@code List<SysUser>}
+     */
+    @GetMapping(value = "/page", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<SysUser> findPage(@RequestParam Map<String, Object> params) {
+        return sysUserService.findPage(params);
+    }
+
+    /**
+     * 查询总数
+     *
+     * @param params 查询参数
+     * @return 总记录数
+     */
+    @GetMapping(value = "/count")
+    public Long count(@RequestParam Map<String, Object> params) {
+        return sysUserService.count(params);
     }
 }

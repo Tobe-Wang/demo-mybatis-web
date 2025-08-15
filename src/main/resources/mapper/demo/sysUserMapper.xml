@@ -50,37 +50,92 @@
     <!-- select -->
     <select id="findById" resultType="sysUser">
         select
-        <include refid="columns" />
+            <include refid="columns" />
         from sys_user where id = #{id}
     </select>
 
-<!--    <select id="select" resultType="SysUser">-->
-<!--        <if test="nameLike != null">-->
-<!--            <bind name="nameLikeAny" value="'%' + nameLike + '%'"/>-->
-<!--        </if>-->
-<!--        select-->
-<!--        <include refid="columns" />-->
-<!--        from SYS_USER-->
-<!--        <where>-->
-<!--            <if test="id != null">-->
-<!--                and ID = #{id}-->
-<!--            </if>-->
-<!--            <choose>-->
-<!--                <when test="name != null">-->
-<!--                    and NAME = #{name}-->
-<!--                </when>-->
-<!--                <when test="nameLikeAny != null">-->
-<!--                    and NAME like #{nameLikeAny}-->
-<!--                </when>-->
-<!--            </choose>-->
-<!--            <if test="sex != null">-->
-<!--                and SEX = #{sex}-->
-<!--            </if>-->
-<!--        </where>-->
-<!--        <if test="orderBy != null">-->
-<!--            order by ${orderBy}-->
-<!--        </if>-->
-<!--    </select>-->
+    <select id="count" resultType="long">
+        <if test="name_LIKE != null">
+            <bind name="nameLike" value="'%' + name_LIKE + '%'"/>
+        </if>
+
+        select count(1) from sys_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <choose>
+                <when test="name != null">
+                    and name = #{name}
+                </when>
+                <when test="nameLike != null">
+                    and name like #{nameLike}
+                </when>
+            </choose>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+        </where>
+    </select>
+
+    <select id="find" resultType="sysUser">
+        <if test="name_LIKE != null">
+            <bind name="nameLike" value="'%' + name_LIKE + '%'"/>
+        </if>
+
+        select
+            <include refid="columns" />
+        from sys_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <choose>
+                <when test="name != null">
+                    and name = #{name}
+                </when>
+                <when test="nameLike != null">
+                    and name like #{nameLike}
+                </when>
+            </choose>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+        </where>
+        <if test="ORDER_BY != null">
+            order by ${ORDER_BY}
+        </if>
+    </select>
+
+    <select id="findPage" resultType="sysUser">
+        <if test="name_LIKE != null">
+            <bind name="nameLike" value="'%' + name_LIKE + '%'"/>
+        </if>
+
+        select
+        <include refid="columns" />
+        from sys_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <choose>
+                <when test="name != null">
+                    and name = #{name}
+                </when>
+                <when test="nameLike != null">
+                    and name like #{nameLike}
+                </when>
+            </choose>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+        </where>
+        <if test="ORDER_BY != null">
+            order by ${ORDER_BY}
+        </if>
+        limit #{PAGE_OFFSET}, #{PAGE_SIZE}
+    </select>
 
     <!-- procedure -->
 <!--    <select id="procGetSysUser" resultMap="mapSysUser" useCache="false" statementType="CALLABLE">-->
