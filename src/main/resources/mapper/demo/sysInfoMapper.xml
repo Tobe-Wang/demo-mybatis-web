@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025. Tobe Wang
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhaofd.demomybatisweb.demo.repository.SysInfoRepository">
+    <!-- cache -->
+
+    <!-- cache-ref -->
+
+    <!-- resultMap -->
+
+    <!-- sql -->
+    <sql id="columns">
+        id, name, rcreatetime, rupdatetime
+    </sql>
+
+    <!-- insert -->
+
+    <!-- delete -->
+
+    <!-- update -->
+
+    <!-- select -->
+    <select id="findById" resultType="sysInfo">
+        select
+        <include refid="columns"/>
+        from sys_info where id = #{id}
+    </select>
+
+    <!-- procedure -->
+
+    <!-- function -->
+
+</mapper>
