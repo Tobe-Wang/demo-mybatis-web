@@ -46,6 +46,7 @@ public class SysUserService {
      * @param ds 增、删、改数据集
      * @return 保存后的增、删、改数据集
      */
+    @Transactional
     public DataSet<SysUser, Integer> save(DataSet<SysUser, Integer> ds) {
         // 删除
         if (ds.getDeletedIds() != null && !ds.getDeletedIds().isEmpty()) {

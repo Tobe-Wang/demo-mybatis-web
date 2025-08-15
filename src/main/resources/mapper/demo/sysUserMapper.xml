@@ -38,14 +38,22 @@
     </insert>
 
     <!-- delete -->
-<!--    <delete id="deleteById">-->
-<!--        delete from SYS_USER where ID = #{id}-->
-<!--    </delete>-->
+    <delete id="deleteById">
+        delete from sys_user where id = #{id}
+    </delete>
+
+    <delete id="deleteByIdInBatch">
+        delete from sys_user where id in (
+            <foreach item="item" collection="list" separator=",">
+                #{item}
+            </foreach>
+        )
+    </delete>
 
     <!-- update -->
-<!--    <update id="update">-->
-<!--        update SYS_USER set NAME = #{name}, SEX = #{sex} where ID = #{id}-->
-<!--    </update>-->
+    <update id="update">
+        update sys_user set name = #{name}, sex = #{sex}, regtime = #{regtime} where id = #{id}
+    </update>
 
     <!-- select -->
     <select id="findById" resultType="sysUser">
@@ -55,7 +63,7 @@
     </select>
 
     <select id="find" resultType="sysUser">
-        <if test="name_LIKE != null">
+        <if test="name_LIKE != null and name_LIKE != ''">
             <bind name="nameLike" value="'%' + name_LIKE + '%'"/>
         </if>
 
@@ -78,13 +86,13 @@
                 and sex = #{sex}
             </if>
         </where>
-        <if test="ORDER_BY != null">
+        <if test="ORDER_BY != null and ORDER_BY != ''">
             order by ${ORDER_BY}
         </if>
     </select>
 
     <select id="findPage" resultType="sysUser">
-        <if test="name_LIKE != null">
+        <if test="name_LIKE != null and name_LIKE != ''">
             <bind name="nameLike" value="'%' + name_LIKE + '%'"/>
         </if>
 
@@ -107,14 +115,14 @@
                 and sex = #{sex}
             </if>
         </where>
-        <if test="ORDER_BY != null">
+        <if test="ORDER_BY != null and ORDER_BY != ''">
             order by ${ORDER_BY}
         </if>
         limit #{PAGE_OFFSET}, #{PAGE_SIZE}
     </select>
 
     <select id="count" resultType="long">
-        <if test="name_LIKE != null">
+        <if test="name_LIKE != null and name_LIKE != ''">
             <bind name="nameLike" value="'%' + name_LIKE + '%'"/>
         </if>
 
