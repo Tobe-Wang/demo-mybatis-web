@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025. Tobe Wang
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhaofd.demomybatisweb.demo.repository.SysUserRepository">
+    <!-- cache -->
+<!--    <cache eviction="LRU" />-->
+
+    <!-- cache-ref -->
+<!--    <cache-ref namespace="com.afant.demo.sys.mapper.SysMapper"/>-->
+
+    <!-- resultMap -->
+<!--    <resultMap id="mapSysUser" type="SysUser">-->
+<!--        <id property="id" column="ID" />-->
+<!--        <result property="name" column="NAME" />-->
+<!--        <result property="sex" column="SEX" />-->
+<!--        <collection property="listSysAddress" ofType="SysAddress" javaType="ArrayList" column="id" select="com.afant.demo.sys.mapper.SysAddressMapper.selectByUserid" />-->
+<!--    </resultMap>-->
+
+    <!-- sql -->
+    <sql id="columns">
+        id, name, sex, regtime
+    </sql>
+
+    <!-- insert -->
+<!--    <insert id="insert" useGeneratedKeys="true" keyProperty="id">-->
+<!--        insert into SYS_USER(NAME, SEX) values(#{name}, #{sex})-->
+<!--    </insert>-->
+
+<!--    <insert id="insertBatch" useGeneratedKeys="true" keyProperty="id">-->
+<!--        insert into SYS_USER(NAME, SEX) values-->
+<!--        <foreach item="item" collection="list" separator=",">-->
+<!--            (#{item.name}, #{item.sex})-->
+<!--        </foreach>-->
+<!--    </insert>-->
+
+    <!-- delete -->
+<!--    <delete id="deleteById">-->
+<!--        delete from SYS_USER where ID = #{id}-->
+<!--    </delete>-->
+
+    <!-- update -->
+<!--    <update id="update">-->
+<!--        update SYS_USER set NAME = #{name}, SEX = #{sex} where ID = #{id}-->
+<!--    </update>-->
+
+    <!-- select -->
+    <select id="findById" resultType="sysUser">
+        select
+        <include refid="columns" />
+        from sys_user where id = #{id}
+    </select>
+
+<!--    <select id="select" resultType="SysUser">-->
+<!--        <if test="nameLike != null">-->
+<!--            <bind name="nameLikeAny" value="'%' + nameLike + '%'"/>-->
+<!--        </if>-->
+<!--        select-->
+<!--        <include refid="columns" />-->
+<!--        from SYS_USER-->
+<!--        <where>-->
+<!--            <if test="id != null">-->
+<!--                and ID = #{id}-->
+<!--            </if>-->
+<!--            <choose>-->
+<!--                <when test="name != null">-->
+<!--                    and NAME = #{name}-->
+<!--                </when>-->
+<!--                <when test="nameLikeAny != null">-->
+<!--                    and NAME like #{nameLikeAny}-->
+<!--                </when>-->
+<!--            </choose>-->
+<!--            <if test="sex != null">-->
+<!--                and SEX = #{sex}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        <if test="orderBy != null">-->
+<!--            order by ${orderBy}-->
+<!--        </if>-->
+<!--    </select>-->
+
+    <!-- procedure -->
+<!--    <select id="procGetSysUser" resultMap="mapSysUser" useCache="false" statementType="CALLABLE">-->
+<!--        {call PROC_GET_SYS_USER(#{name,mode=IN,javaType=String,jdbcType=VARCHAR})}-->
+<!--    </select>-->
+
+    <!-- function -->
+
+</mapper>
