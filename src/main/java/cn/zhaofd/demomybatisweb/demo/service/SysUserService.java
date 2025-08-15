@@ -29,47 +29,6 @@ public class SysUserService {
     }
 
     /**
-     * 新增保存
-     *
-     * @param sysUser DTO数据传输对象
-     * @return 保存后的DTO数据传输对象
-     */
-    @Transactional
-    public SysUser save(SysUser sysUser) {
-        int num = sysUserRepository.save(sysUser);
-        return num > 0 ? sysUser : null;
-    }
-
-    /**
-     * 批量保存
-     *
-     * @param ds 增、删、改数据集
-     * @return 保存后的增、删、改数据集
-     */
-    @Transactional
-    public DataSet<SysUser, Integer> save(DataSet<SysUser, Integer> ds) {
-        // 删除
-        if (ds.getDeletedIds() != null && !ds.getDeletedIds().isEmpty()) {
-            // TODO 删除
-        }
-
-        // 修改
-        if (ds.getUpdatedList() != null && !ds.getUpdatedList().isEmpty()) {
-            // TODO 修改
-        }
-
-        // 增加
-        if (ds.getInsertedList() != null && !ds.getInsertedList().isEmpty()) {
-            int num = sysUserRepository.saveAll(ds.getInsertedList());
-            if (num <= 0) { // 保存失败
-                ds.setInsertedList(null);
-            }
-        }
-
-        return ds;
-    }
-
-    /**
      * 根据id查询
      *
      * @param id 主键ID
@@ -136,6 +95,72 @@ public class SysUserService {
         }
 
         return sysUserRepository.findPage(params);
+    }
+
+    /**
+     * 新增保存
+     *
+     * @param sysUser DTO数据传输对象
+     * @return 保存后的DTO数据传输对象
+     */
+    @Transactional
+    public SysUser save(SysUser sysUser) {
+        int num = sysUserRepository.save(sysUser);
+        return num > 0 ? sysUser : null;
+    }
+
+    /**
+     * 批量保存
+     *
+     * @param ds 增、删、改数据集
+     * @return 保存后的增、删、改数据集
+     */
+    @Transactional
+    public DataSet<SysUser, Integer> save(DataSet<SysUser, Integer> ds) {
+        // 删除
+        if (ds.getDeletedIds() != null && !ds.getDeletedIds().isEmpty()) {
+            sysUserRepository.delete(ds.getDeletedIds());
+        }
+
+        // 修改
+        if (ds.getUpdatedList() != null && !ds.getUpdatedList().isEmpty()) {
+            List<SysUser> list = ds.getUpdatedList();
+            if (list != null && !list.isEmpty()) {
+                for (SysUser sysUser : list) {
+                    sysUserRepository.update(sysUser);
+                }
+            }
+        }
+
+        // 增加
+        if (ds.getInsertedList() != null && !ds.getInsertedList().isEmpty()) {
+            sysUserRepository.saveAll(ds.getInsertedList());
+        }
+
+        return ds;
+    }
+
+    /**
+     * 修改
+     *
+     * @param sysUser DTO数据传输对象
+     * @return 修改后的DTO数据传输对象
+     */
+    @Transactional
+    public SysUser update(SysUser sysUser) {
+        int num = sysUserRepository.update(sysUser);
+        return num > 0 ? sysUser : null;
+    }
+
+    /**
+     * 删除
+     *
+     * @param id 主键ID
+     * @return 受影响行数
+     */
+    @Transactional
+    public int deleteById(Integer id) {
+        return sysUserRepository.deleteById(id);
     }
 
     /**

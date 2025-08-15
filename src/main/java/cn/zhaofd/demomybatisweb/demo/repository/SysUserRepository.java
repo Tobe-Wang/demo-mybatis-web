@@ -16,6 +16,22 @@ import java.util.Map;
 @Mapper
 public interface SysUserRepository {
     /**
+     * 根据id查询
+     *
+     * @param id 主键ID
+     * @return SysUser
+     */
+    SysUser findById(Integer id);
+
+    /**
+     * 查询
+     *
+     * @param params 查询参数
+     * @return {@code List<SysUser>}
+     */
+    List<SysUser> find(Map<String, Object> params);
+
+    /**
      * 新增保存
      *
      * @param sysUser DTO数据传输对象
@@ -32,20 +48,28 @@ public interface SysUserRepository {
     int saveAll(List<SysUser> list);
 
     /**
-     * 根据id查询
+     * 修改
      *
-     * @param id 主键ID
-     * @return SysUser
+     * @param sysUser DTO数据传输对象
+     * @return 受影响行数
      */
-    SysUser findById(Integer id);
+    int update(SysUser sysUser);
 
     /**
-     * 查询
+     * 删除
      *
-     * @param params 查询参数
-     * @return {@code List<SysUser>}
+     * @param id 主键ID
+     * @return 受影响行数
      */
-    List<SysUser> find(Map<String, Object> params);
+    int deleteById(Integer id);
+
+    /**
+     * 批量删除
+     *
+     * @param list 批量删除的集合
+     * @return 受影响行数
+     */
+    int delete(List<Integer> list);
 
     /**
      * 分页查询

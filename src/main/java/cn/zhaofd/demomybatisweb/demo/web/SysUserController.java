@@ -94,6 +94,38 @@ public class SysUserController {
     }
 
     /**
+     * 修改(前端json对象数据)
+     *
+     * @param sysUser    DTO数据传输对象
+     * @param errors Errors对象
+     * @return 修改后的DTO数据传输对象
+     */
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public SysUser update(@Valid @RequestBody SysUser sysUser, Errors errors) {
+        // 输入参数验证
+        if (errors.hasErrors()) {
+            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getFieldErrorMsg(errors));
+        }
+
+        // 验证主键字段是否有值
+        if (sysUser.getId() == null) {
+            throw new HttpException(HttpStatus.BAD_REQUEST.value(), "主键字段值(id)不能为空");
+        }
+
+        return sysUserService.update(sysUser);
+    }
+
+    /**
+     * 删除
+     *
+     * @param id 主键id
+     */
+    @DeleteMapping(value = "/{id}")
+    public Integer deleteById(@PathVariable("id") Integer id) {
+        return sysUserService.deleteById(id);
+    }
+
+    /**
      * 查询总数
      *
      * @param params 查询参数

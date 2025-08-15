@@ -42,7 +42,7 @@
         delete from sys_user where id = #{id}
     </delete>
 
-    <delete id="deleteByIdInBatch">
+    <delete id="delete">
         delete from sys_user where id in (
             <foreach item="item" collection="list" separator=",">
                 #{item}
