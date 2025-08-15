@@ -6,7 +6,6 @@ package cn.zhaofd.demomybatisweb.demo.repository;
 
 import cn.zhaofd.demomybatisweb.demo.dto.SysInfo;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 手动配置的MyBatis应用示例
@@ -19,6 +18,5 @@ public interface SysInfoRepository {
      * @param id 主键ID
      * @return SysInfo
      */
-    @Transactional(readOnly = true)
     SysInfo findById(String id);
 }

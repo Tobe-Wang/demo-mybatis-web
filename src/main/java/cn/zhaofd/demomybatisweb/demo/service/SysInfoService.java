@@ -8,6 +8,7 @@ import cn.zhaofd.demomybatisweb.demo.dto.SysInfo;
 import cn.zhaofd.demomybatisweb.demo.repository.SysInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 手动配置的MyBatis应用示例
@@ -26,6 +27,7 @@ public class SysInfoService {
      * @param id 主键ID
      * @return SysInfo
      */
+    @Transactional(readOnly = true)
     public SysInfo findById(String id) {
         return sysInfoRepository.findById(id);
     }

@@ -26,7 +26,7 @@
     <!-- select -->
     <select id="findById" resultType="sysInfo">
         select
-        <include refid="columns"/>
+            <include refid="columns"/>
         from sys_info where id = #{id}
     </select>
 
