@@ -16,6 +16,22 @@ import java.util.Map;
 @Mapper
 public interface SysUserRepository {
     /**
+     * 新增保存
+     *
+     * @param sysUser DTO数据传输对象
+     * @return 受影响行数
+     */
+    int save(SysUser sysUser);
+
+    /**
+     * 批量保存
+     *
+     * @param list 批量保存的集合
+     * @return 受影响行数
+     */
+    int saveAll(List<SysUser> list);
+
+    /**
      * 根据id查询
      *
      * @param id 主键ID

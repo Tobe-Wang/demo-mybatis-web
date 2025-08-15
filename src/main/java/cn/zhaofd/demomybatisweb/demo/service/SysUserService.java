@@ -6,6 +6,7 @@ package cn.zhaofd.demomybatisweb.demo.service;
 
 import cn.zhaofd.core.base.NumberUtil;
 import cn.zhaofd.core.base.ObjectUtil;
+import cn.zhaofd.demomybatisweb.core.dto.DataSet;
 import cn.zhaofd.demomybatisweb.demo.dto.SysUser;
 import cn.zhaofd.demomybatisweb.demo.repository.SysUserRepository;
 import cn.zhaofd.demomybatisweb.type.MyBatisParamType;
@@ -25,6 +26,46 @@ public class SysUserService {
 
     public SysUserService(@Autowired SysUserRepository sysUserRepository) {
         this.sysUserRepository = sysUserRepository;
+    }
+
+    /**
+     * 新增保存
+     *
+     * @param sysUser DTO数据传输对象
+     * @return 保存后的DTO数据传输对象
+     */
+    @Transactional
+    public SysUser save(SysUser sysUser) {
+        int num = sysUserRepository.save(sysUser);
+        return num > 0 ? sysUser : null;
+    }
+
+    /**
+     * 批量保存
+     *
+     * @param ds 增、删、改数据集
+     * @return 保存后的增、删、改数据集
+     */
+    public DataSet<SysUser, Integer> save(DataSet<SysUser, Integer> ds) {
+        // 删除
+        if (ds.getDeletedIds() != null && !ds.getDeletedIds().isEmpty()) {
+            // TODO 删除
+        }
+
+        // 修改
+        if (ds.getUpdatedList() != null && !ds.getUpdatedList().isEmpty()) {
+            // TODO 修改
+        }
+
+        // 增加
+        if (ds.getInsertedList() != null && !ds.getInsertedList().isEmpty()) {
+            int num = sysUserRepository.saveAll(ds.getInsertedList());
+            if (num <= 0) { // 保存失败
+                ds.setInsertedList(null);
+            }
+        }
+
+        return ds;
     }
 
     /**

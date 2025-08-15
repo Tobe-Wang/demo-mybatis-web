@@ -4,10 +4,16 @@
 
 package cn.zhaofd.demomybatisweb.demo.web;
 
+import cn.zhaofd.core.net.exception.HttpException;
+import cn.zhaofd.core.spring.validation.ValidationUtil;
+import cn.zhaofd.demomybatisweb.core.dto.DataSet;
 import cn.zhaofd.demomybatisweb.demo.dto.SysUser;
 import cn.zhaofd.demomybatisweb.demo.service.SysUserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,6 +62,35 @@ public class SysUserController {
     @GetMapping(value = "/page", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<SysUser> findPage(@RequestParam Map<String, Object> params) {
         return sysUserService.findPage(params);
+    }
+
+    /**
+     * 新增保存(前端json对象数据)
+     *
+     * @param sysUser DTO数据传输对象
+     * @param errors  Errors对象
+     * @return 保存后的DTO数据传输对象
+     */
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public SysUser save(@Valid @RequestBody SysUser sysUser, Errors errors) {
+        // 输入参数验证
+        if (errors.hasErrors()) {
+            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getFieldErrorMsg(errors));
+        }
+
+        return sysUserService.save(sysUser);
+    }
+
+    /**
+     * 批量保存
+     *
+     * @param ds 增、删、改数据集
+     * @return 保存后的增、删、改数据集
+     */
+    @PostMapping(value = "/dataset", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public DataSet<SysUser, Integer> saveDataSet(@RequestBody DataSet<SysUser, Integer> ds) {
+        return sysUserService.save(ds);
     }
 
     /**
