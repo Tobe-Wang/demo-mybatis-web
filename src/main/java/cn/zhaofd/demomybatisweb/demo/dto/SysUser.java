@@ -7,14 +7,15 @@ package cn.zhaofd.demomybatisweb.demo.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-import org.apache.ibatis.type.Alias;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Alias("sysUser")
+/**
+ * 手动配置的MyBatis应用示例
+ */
 @Data
 public class SysUser implements Serializable {
     @Serial
