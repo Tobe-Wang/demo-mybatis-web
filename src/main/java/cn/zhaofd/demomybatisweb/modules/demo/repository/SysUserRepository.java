@@ -2,9 +2,9 @@
  * Copyright (c) 2025. Tobe Wang
  */
 
-package cn.zhaofd.demomybatisweb.demo.repository;
+package cn.zhaofd.demomybatisweb.modules.demo.repository;
 
-import cn.zhaofd.demomybatisweb.demo.dto.SysUser;
+import cn.zhaofd.demomybatisweb.modules.demo.dto.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

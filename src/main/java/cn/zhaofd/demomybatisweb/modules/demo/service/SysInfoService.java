@@ -2,10 +2,10 @@
  * Copyright (c) 2025. Tobe Wang
  */
 
-package cn.zhaofd.demomybatisweb.demo.service;
+package cn.zhaofd.demomybatisweb.modules.demo.service;
 
-import cn.zhaofd.demomybatisweb.demo.dto.SysInfo;
-import cn.zhaofd.demomybatisweb.demo.repository.SysInfoRepository;
+import cn.zhaofd.demomybatisweb.modules.demo.dto.SysInfo;
+import cn.zhaofd.demomybatisweb.modules.demo.repository.SysInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -2,13 +2,13 @@
  * Copyright (c) 2025. Tobe Wang
  */
 
-package cn.zhaofd.demomybatisweb.demo.service;
+package cn.zhaofd.demomybatisweb.modules.demo.service;
 
 import cn.zhaofd.core.base.NumberUtil;
 import cn.zhaofd.core.base.ObjectUtil;
 import cn.zhaofd.demomybatisweb.core.dto.DataSet;
-import cn.zhaofd.demomybatisweb.demo.dto.SysUser;
-import cn.zhaofd.demomybatisweb.demo.repository.SysUserRepository;
+import cn.zhaofd.demomybatisweb.modules.demo.dto.SysUser;
+import cn.zhaofd.demomybatisweb.modules.demo.repository.SysUserRepository;
 import cn.zhaofd.demomybatisweb.type.MyBatisParamType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

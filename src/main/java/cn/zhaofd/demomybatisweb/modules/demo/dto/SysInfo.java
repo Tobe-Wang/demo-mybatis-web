@@ -2,7 +2,7 @@
  * Copyright (c) 2025. Tobe Wang
  */
 
-package cn.zhaofd.demomybatisweb.demo.dto;
+package cn.zhaofd.demomybatisweb.modules.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Size;

@@ -2,10 +2,10 @@
  * Copyright (c) 2025. Tobe Wang
  */
 
-package cn.zhaofd.demomybatisweb.demo.web;
+package cn.zhaofd.demomybatisweb.modules.demo.web;
 
-import cn.zhaofd.demomybatisweb.demo.dto.SysInfo;
-import cn.zhaofd.demomybatisweb.demo.service.SysInfoService;
+import cn.zhaofd.demomybatisweb.modules.demo.dto.SysInfo;
+import cn.zhaofd.demomybatisweb.modules.demo.service.SysInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

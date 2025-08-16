@@ -2,13 +2,13 @@
  * Copyright (c) 2025. Tobe Wang
  */
 
-package cn.zhaofd.demomybatisweb.demo.web;
+package cn.zhaofd.demomybatisweb.modules.demo.web;
 
 import cn.zhaofd.core.net.exception.HttpException;
 import cn.zhaofd.core.spring.validation.ValidationUtil;
 import cn.zhaofd.demomybatisweb.core.dto.DataSet;
-import cn.zhaofd.demomybatisweb.demo.dto.SysUser;
-import cn.zhaofd.demomybatisweb.demo.service.SysUserService;
+import cn.zhaofd.demomybatisweb.modules.demo.dto.SysUser;
+import cn.zhaofd.demomybatisweb.modules.demo.service.SysUserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
