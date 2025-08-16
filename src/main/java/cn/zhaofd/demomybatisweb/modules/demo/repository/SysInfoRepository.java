@@ -8,7 +8,7 @@ import cn.zhaofd.demomybatisweb.modules.demo.dto.SysInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 手动配置的MyBatis应用示例
+ * 手动xml方式配置的MyBatis应用示例
  */
 @Mapper
 public interface SysInfoRepository {

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 手动配置的MyBatis应用示例
+ * 手动xml方式配置的MyBatis应用示例
  */
 @RestController
 @RequestMapping("/sys/user")

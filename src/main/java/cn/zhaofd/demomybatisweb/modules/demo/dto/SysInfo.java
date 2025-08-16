@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.time.Instant;
 
 /**
- * 手动配置的MyBatis应用示例
+ * 手动xml方式配置的MyBatis应用示例
  */
 @Data
 public class SysInfo implements Serializable {

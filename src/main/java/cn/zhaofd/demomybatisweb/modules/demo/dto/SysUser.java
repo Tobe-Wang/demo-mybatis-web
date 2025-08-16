@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 手动配置的MyBatis应用示例
+ * 手动xml方式配置的MyBatis应用示例
  */
 @Data
 public class SysUser implements Serializable {

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 手动配置的MyBatis应用示例
+ * 手动xml方式配置的MyBatis应用示例
  */
 @RestController
 @RequestMapping("/sys/info")
