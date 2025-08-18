@@ -135,4 +135,15 @@ public class SysUserController {
     public Long count(@RequestParam Map<String, Object> params) {
         return sysUserService.count(params);
     }
+
+    /**
+     * 调用存储过程
+     *
+     * @param name 姓名
+     * @return {@code List<SysUser>}
+     */
+    @GetMapping(value = "/procUser", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<SysUser> procUser(@RequestParam String name) {
+        return sysUserService.procUser(name);
+    }
 }

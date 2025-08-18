@@ -12,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 手动xml方式配置的MyBatis应用示例
@@ -32,4 +33,6 @@ public class SysUser implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") // Spring框架注解，用于前端到后端的数据绑定（HTTP请求参数->Java对象）
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // Jackson库注解，用于JSON序列化和反序列化（Java对象<->JSON字符串）
     private LocalDateTime regtime;
+
+    private List<SysAddress> listSysAddress;
 }

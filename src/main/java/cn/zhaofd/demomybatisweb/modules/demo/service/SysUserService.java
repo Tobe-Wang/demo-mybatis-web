@@ -173,4 +173,14 @@ public class SysUserService {
     public Long count(Map<String, Object> params) {
         return sysUserRepository.count(params);
     }
+
+    /**
+     * 调用存储过程
+     *
+     * @param name 姓名
+     * @return {@code List<SysUser>}
+     */
+    public List<SysUser> procUser(String name) {
+        return sysUserRepository.procUser(name);
+    }
 }

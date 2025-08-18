@@ -13,12 +13,13 @@
 <!--    <cache-ref namespace="com.afant.demo.sys.mapper.SysMapper"/>-->
 
     <!-- resultMap -->
-<!--    <resultMap id="mapSysUser" type="SysUser">-->
-<!--        <id property="id" column="ID" />-->
-<!--        <result property="name" column="NAME" />-->
-<!--        <result property="sex" column="SEX" />-->
-<!--        <collection property="listSysAddress" ofType="SysAddress" javaType="ArrayList" column="id" select="com.afant.demo.sys.mapper.SysAddressMapper.selectByUserid" />-->
-<!--    </resultMap>-->
+    <resultMap id="mapSysUser" type="SysUser">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="sex" column="sex" />
+        <result property="regtime" column="regtime" />
+        <collection property="listSysAddress" ofType="SysAddress" javaType="ArrayList" column="id" select="cn.zhaofd.demomybatisweb.modules.demo.repository.SysAddressRepository.findByUserId" />
+    </resultMap>
 
     <!-- sql -->
     <sql id="columns">
@@ -146,9 +147,9 @@
     </select>
 
     <!-- procedure -->
-<!--    <select id="procGetSysUser" resultMap="mapSysUser" useCache="false" statementType="CALLABLE">-->
-<!--        {call PROC_GET_SYS_USER(#{name,mode=IN,javaType=String,jdbcType=VARCHAR})}-->
-<!--    </select>-->
+    <select id="procUser" resultMap="mapSysUser" statementType="CALLABLE">
+        {call proc_user(#{name,mode=IN,javaType=String,jdbcType=VARCHAR})}
+    </select>
 
     <!-- function -->
 

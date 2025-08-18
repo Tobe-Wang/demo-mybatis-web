@@ -86,4 +86,12 @@ public interface SysUserRepository {
      * @return 总记录数
      */
     Long count(Map<String, Object> params);
+
+    /**
+     * 调用存储过程
+     *
+     * @param name 姓名
+     * @return {@code List<SysUser>}
+     */
+    List<SysUser> procUser(String name);
 }
