@@ -18,6 +18,13 @@
     </sql>
 
     <!-- insert -->
+    <insert id="save">
+        <selectKey keyProperty="id" resultType="string" order="BEFORE" statementType="PREPARED">
+            select replace(uuid(), '-', '') as uuid
+        </selectKey>
+        insert into sys_info(id, name, rcreatetime, rupdatetime)
+        values (#{id}, #{name}, #{rcreatetime}, #{rupdatetime})
+    </insert>
 
     <!-- delete -->
 

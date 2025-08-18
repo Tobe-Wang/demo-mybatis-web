@@ -19,4 +19,12 @@ public interface SysInfoRepository {
      * @return SysInfo
      */
     SysInfo findById(String id);
+
+    /**
+     * 新增保存
+     *
+     * @param sysInfo DTO数据传输对象
+     * @return 受影响行数
+     */
+    int save(SysInfo sysInfo);
 }

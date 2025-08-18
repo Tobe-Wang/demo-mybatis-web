@@ -31,4 +31,16 @@ public class SysInfoService {
     public SysInfo findById(String id) {
         return sysInfoRepository.findById(id);
     }
+
+    /**
+     * 新增保存
+     *
+     * @param sysInfo DTO数据传输对象
+     * @return 保存后的DTO数据传输对象
+     */
+    @Transactional
+    public SysInfo save(SysInfo sysInfo) {
+        int num = sysInfoRepository.save(sysInfo);
+        return num > 0 ? sysInfo : null;
+    }
 }
