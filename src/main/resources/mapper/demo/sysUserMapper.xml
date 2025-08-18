@@ -24,8 +24,7 @@
 
     <!-- sql -->
     <sql id="columns">
-        id
-        , name, sex, regtime
+        id, name, sex, regtime
     </sql>
 
     <!-- insert -->
