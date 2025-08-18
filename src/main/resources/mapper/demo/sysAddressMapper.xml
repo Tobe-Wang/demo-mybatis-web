@@ -16,7 +16,7 @@
         <result property="address" column="address"/>
         <result property="zipcode" column="zipcode"/>
         <result property="userid" column="userid"/>
-        <association property="sysUser" javaType="SysUser"  columnPrefix="u_">
+        <association property="sysUser" javaType="SysUser" columnPrefix="u_">
             <id property="id" column="id"/>
             <result property="name" column="name"/>
             <result property="sex" column="sex"/>
