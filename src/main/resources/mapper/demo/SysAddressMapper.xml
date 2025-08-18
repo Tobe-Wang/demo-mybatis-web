@@ -11,6 +11,18 @@
     <!-- cache-ref -->
 
     <!-- resultMap -->
+    <resultMap id="mapSysAddress" type="SysAddress">
+        <id property="id" column="id"/>
+        <result property="address" column="address"/>
+        <result property="zipcode" column="zipcode"/>
+        <result property="userid" column="userid"/>
+        <association property="sysUser" javaType="SysUser"  columnPrefix="u_">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="sex" column="sex"/>
+            <result property="regtime" column="regtime"/>
+        </association>
+    </resultMap>
 
     <!-- sql -->
     <sql id="columns">
@@ -26,13 +38,27 @@
     <!-- select -->
     <select id="findById" resultType="sysAddress">
         select
-            <include refid="columns"/>
+        <include refid="columns"/>
         from sys_address where id = #{id}
+    </select>
+
+    <select id="findAllById" resultMap="mapSysAddress">
+        select a.id,
+               a.address,
+               a.zipcode,
+               a.userid,
+               u.id      as u_id,
+               u.name    as u_name,
+               u.sex     as u_sex,
+               u.regtime as u_regtime
+        from sys_address a
+                 left join sys_user u on a.userid = u.id
+        where a.id = #{id}
     </select>
 
     <select id="findByUserId" resultType="sysAddress">
         select
-            <include refid="columns" />
+        <include refid="columns"/>
         from sys_address where USERID = #{userid}
     </select>
 

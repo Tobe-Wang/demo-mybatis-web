@@ -35,4 +35,15 @@ public class SysAddressController {
     public SysAddress findById(@PathVariable("id") Integer id) {
         return sysAddressService.findById(id);
     }
+
+    /**
+     * 根据id查询(包括外键对象)
+     *
+     * @param id 主键ID
+     * @return SysAddress
+     */
+    @GetMapping(value = "/all/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public SysAddress findAllById(@PathVariable("id") Integer id) {
+        return sysAddressService.findAllById(id);
+    }
 }

@@ -31,4 +31,15 @@ public class SysAddressService {
     public SysAddress findById(Integer id) {
         return sysAddressRepository.findById(id);
     }
+
+    /**
+     * 根据id查询(包括外键对象)
+     *
+     * @param id 主键ID
+     * @return SysAddress
+     */
+    @Transactional(readOnly = true)
+    public SysAddress findAllById(Integer id) {
+        return sysAddressRepository.findAllById(id);
+    }
 }

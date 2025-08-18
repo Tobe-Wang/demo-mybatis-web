@@ -23,6 +23,14 @@ public interface SysAddressRepository {
     SysAddress findById(Integer id);
 
     /**
+     * 根据id查询(包括外键对象)
+     *
+     * @param id 主键ID
+     * @return SysAddress
+     */
+    SysAddress findAllById(Integer id);
+
+    /**
      * 根据用户id查询
      *
      * @param userid 用户id
