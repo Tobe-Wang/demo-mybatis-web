@@ -32,6 +32,14 @@ public interface SysUserRepository {
     List<SysUser> find(Map<String, Object> params);
 
     /**
+     * 分页查询
+     *
+     * @param params 查询参数
+     * @return {@code List<SysUser>}
+     */
+    List<SysUser> findPage(Map<String, Object> params);
+
+    /**
      * 新增保存
      *
      * @param sysUser DTO数据传输对象
@@ -70,14 +78,6 @@ public interface SysUserRepository {
      * @return 受影响行数
      */
     int delete(List<Integer> list);
-
-    /**
-     * 分页查询
-     *
-     * @param params 查询参数
-     * @return {@code List<SysUser>}
-     */
-    List<SysUser> findPage(Map<String, Object> params);
 
     /**
      * 查询总数
