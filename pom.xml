@@ -16,7 +16,7 @@
     <artifactId>demo-mybatis-web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>demo-mybatis-web</name>
-    <description>使用示例-Spring MyBatis</description>
+    <description>使用示例-Spring MyBatis，使用xml方式、注解方式手工配置项目</description>
     <properties>
         <java.version>21</java.version>
     </properties>
