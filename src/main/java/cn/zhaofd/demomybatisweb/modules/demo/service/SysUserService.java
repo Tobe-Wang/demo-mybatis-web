@@ -103,7 +103,7 @@ public class SysUserService {
      * @param sysUser DTO数据传输对象
      * @return 保存后的DTO数据传输对象
      */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysUser save(SysUser sysUser) {
         int num = sysUserRepository.save(sysUser);
         return num > 0 ? sysUser : null;
@@ -115,7 +115,7 @@ public class SysUserService {
      * @param ds 增、删、改数据集
      * @return 保存后的增、删、改数据集
      */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public DataSet<SysUser, Integer> save(DataSet<SysUser, Integer> ds) {
         // 删除
         if (ds.getDeletedIds() != null && !ds.getDeletedIds().isEmpty()) {
@@ -146,7 +146,7 @@ public class SysUserService {
      * @param sysUser DTO数据传输对象
      * @return 修改后的DTO数据传输对象
      */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysUser update(SysUser sysUser) {
         int num = sysUserRepository.update(sysUser);
         return num > 0 ? sysUser : null;
@@ -158,7 +158,7 @@ public class SysUserService {
      * @param id 主键ID
      * @return 受影响行数
      */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public int deleteById(Integer id) {
         return sysUserRepository.deleteById(id);
     }

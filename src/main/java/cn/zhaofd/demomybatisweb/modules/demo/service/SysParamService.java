@@ -104,7 +104,7 @@ public class SysParamService {
      * @param sysParam DTO数据传输对象
      * @return 保存后的DTO数据传输对象
      */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysParam save(SysParam sysParam) {
         int num = sysParamRepository.save(sysParam);
         return num > 0 ? sysParam : null;
@@ -116,7 +116,7 @@ public class SysParamService {
      * @param ds 增、删、改数据集
      * @return 保存后的增、删、改数据集
      */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public DataSet<SysParam, Integer> save(DataSet<SysParam, Integer> ds) {
         // 删除
         if (ds.getDeletedIds() != null && !ds.getDeletedIds().isEmpty()) {
@@ -147,7 +147,7 @@ public class SysParamService {
      * @param sysParam DTO数据传输对象
      * @return 修改后的DTO数据传输对象
      */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysParam update(SysParam sysParam) {
         int num = sysParamRepository.update(sysParam);
         return num > 0 ? sysParam : null;
@@ -159,7 +159,7 @@ public class SysParamService {
      * @param id 主键ID
      * @return 受影响行数
      */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public int deleteById(Integer id) {
         return sysParamRepository.deleteById(id);
     }
