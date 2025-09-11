@@ -76,7 +76,7 @@ public class SysUserController {
     public SysUser save(@Valid @RequestBody SysUser sysUser, Errors errors) {
         // 输入参数验证
         if (errors.hasErrors()) {
-            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getFieldErrorMsg(errors));
+            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getErrorMsg(errors));
         }
 
         return sysUserService.save(sysUser);
@@ -104,7 +104,7 @@ public class SysUserController {
     public SysUser update(@Valid @RequestBody SysUser sysUser, Errors errors) {
         // 输入参数验证
         if (errors.hasErrors()) {
-            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getFieldErrorMsg(errors));
+            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getErrorMsg(errors));
         }
 
         // 验证主键字段是否有值

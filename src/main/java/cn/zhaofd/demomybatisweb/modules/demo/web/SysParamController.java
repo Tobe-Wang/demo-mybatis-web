@@ -77,7 +77,7 @@ public class SysParamController {
     public SysParam save(@Valid @RequestBody SysParam sysParam, Errors errors) {
         // 输入参数验证
         if (errors.hasErrors()) {
-            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getFieldErrorMsg(errors));
+            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getErrorMsg(errors));
         }
 
         return sysParamService.save(sysParam);
@@ -105,7 +105,7 @@ public class SysParamController {
     public SysParam update(@Valid @RequestBody SysParam sysParam, Errors errors) {
         // 输入参数验证
         if (errors.hasErrors()) {
-            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getFieldErrorMsg(errors));
+            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getErrorMsg(errors));
         }
 
         // 验证主键字段是否有值

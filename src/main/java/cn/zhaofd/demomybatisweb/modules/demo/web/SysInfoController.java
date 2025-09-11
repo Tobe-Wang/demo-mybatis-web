@@ -50,7 +50,7 @@ public class SysInfoController {
     public SysInfo save(@Valid @RequestBody SysInfo sysInfo, Errors errors) {
         // 输入参数验证
         if (errors.hasErrors()) {
-            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getFieldErrorMsg(errors));
+            throw new HttpException(HttpStatus.BAD_REQUEST.value(), ValidationUtil.getErrorMsg(errors));
         }
 
         return sysInfoService.save(sysInfo);
