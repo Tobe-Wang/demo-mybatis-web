@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2025. Tobe Wang
+ * Email：hzbeq@qq.com
  */
 
 package cn.zhaofd.demomybatisweb.config;
@@ -9,7 +10,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * MyBatis配置类s
+ * MyBatis配置类
  */
 @Configuration
 @MapperScan(
